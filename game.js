@@ -88,38 +88,38 @@
     function getFakeWarriorsCoodinates(){
         let warriorsCoodinates = [];
         warriorsCoodinates.push(new Warrior(0, 0, true, false, "rock", "red"));
-        warriorsCoodinates.push(new Warrior(0, 1, true, false, "rock", "red"));
-        warriorsCoodinates.push(new Warrior(0, 2, true, true, "rock", "red"));
-        warriorsCoodinates.push(new Warrior(0, 3, true, true, "rock", "red"));
-        warriorsCoodinates.push(new Warrior(0, 4, true, false, "paper", "red"));
-        warriorsCoodinates.push(new Warrior(0, 5, true, false, "paper", "red"));
-        warriorsCoodinates.push(new Warrior(0, 6, true, true, "paper", "red"));
-        warriorsCoodinates.push(new Warrior(1, 0, true, true, "paper", "red"));
+        warriorsCoodinates.push(new Warrior(1, 0, true, false, "rock", "red"));
+        warriorsCoodinates.push(new Warrior(2, 0, true, true, "rock", "red"));
+        warriorsCoodinates.push(new Warrior(3, 0, true, true, "rock", "red"));
+        warriorsCoodinates.push(new Warrior(4, 0, true, false, "paper", "red"));
+        warriorsCoodinates.push(new Warrior(5, 0, true, false, "paper", "red"));
+        warriorsCoodinates.push(new Warrior(6, 0, true, true, "paper", "red"));
+        warriorsCoodinates.push(new Warrior(0, 1, true, true, "paper", "red"));
         warriorsCoodinates.push(new Warrior(1, 1, true, false, "scissors", "red"));
-        warriorsCoodinates.push(new Warrior(1, 2, true, false, "scissors", "red"));
-        warriorsCoodinates.push(new Warrior(1, 3, true, true, "scissors", "red"));
-        warriorsCoodinates.push(new Warrior(1, 4, true, true, "scissors", "red"));
-        warriorsCoodinates.push(new Warrior(1, 5, true, false, "fake", "red"));
-        warriorsCoodinates.push(new Warrior(1, 6, true, false, "flag", "red"));
-        warriorsCoodinates.push(new Warrior(2, 0, true, true, "fake", "red"));
-        warriorsCoodinates.push(new Warrior(2, 1, true, true, "flag", "red"));
+        warriorsCoodinates.push(new Warrior(2, 1, true, false, "scissors", "red"));
+        warriorsCoodinates.push(new Warrior(3, 1, true, true, "scissors", "red"));
+        warriorsCoodinates.push(new Warrior(4, 1, true, true, "scissors", "red"));
+        warriorsCoodinates.push(new Warrior(5, 1, true, false, "fake", "red"));
+        warriorsCoodinates.push(new Warrior(6, 1, true, false, "flag", "red"));
+        warriorsCoodinates.push(new Warrior(0, 2, true, true, "fake", "red"));
+        warriorsCoodinates.push(new Warrior(1, 2, true, true, "flag", "red"));
 
-        warriorsCoodinates.push(new Warrior(5, 0, false, false, "rock", "blue"));
-        warriorsCoodinates.push(new Warrior(5, 1, false, false, "rock", "blue"));
-        warriorsCoodinates.push(new Warrior(5, 2, false, true, "rock", "blue"));
-        warriorsCoodinates.push(new Warrior(5, 3, false, true, "rock", "blue"));
-        warriorsCoodinates.push(new Warrior(5, 4, false, false, "paper", "blue"));
+        warriorsCoodinates.push(new Warrior(0, 5, false, false, "rock", "blue"));
+        warriorsCoodinates.push(new Warrior(1, 5, false, false, "rock", "blue"));
+        warriorsCoodinates.push(new Warrior(2, 5, false, true, "rock", "blue"));
+        warriorsCoodinates.push(new Warrior(3, 5, false, true, "rock", "blue"));
+        warriorsCoodinates.push(new Warrior(4, 5, false, false, "paper", "blue"));
         warriorsCoodinates.push(new Warrior(5, 5, false, false, "paper", "blue"));
-        warriorsCoodinates.push(new Warrior(5, 6, false, true, "paper", "blue"));
-        warriorsCoodinates.push(new Warrior(4, 0, false, true, "paper", "blue"));
-        warriorsCoodinates.push(new Warrior(4, 1, false, false, "scissors", "blue"));
-        warriorsCoodinates.push(new Warrior(4, 2, false, false, "scissors", "blue"));
-        warriorsCoodinates.push(new Warrior(4, 3, false, true, "scissors", "blue"));
+        warriorsCoodinates.push(new Warrior(6, 5, false, true, "paper", "blue"));
+        warriorsCoodinates.push(new Warrior(0, 4, false, true, "paper", "blue"));
+        warriorsCoodinates.push(new Warrior(1, 4, false, false, "scissors", "blue"));
+        warriorsCoodinates.push(new Warrior(2, 4, false, false, "scissors", "blue"));
+        warriorsCoodinates.push(new Warrior(3, 4, false, true, "scissors", "blue"));
         warriorsCoodinates.push(new Warrior(4, 4, false, true, "scissors", "blue"));
-        warriorsCoodinates.push(new Warrior(4, 5, false, false, "fake", "blue"));
-        warriorsCoodinates.push(new Warrior(4, 6, false, false, "flag", "blue"));
-        warriorsCoodinates.push(new Warrior(3, 0, false, true, "fake", "blue"));
-        warriorsCoodinates.push(new Warrior(3, 1, false, true, "flag", "blue"));
+        warriorsCoodinates.push(new Warrior(5, 4, false, false, "fake", "blue"));
+        warriorsCoodinates.push(new Warrior(6, 4, false, false, "flag", "blue"));
+        warriorsCoodinates.push(new Warrior(0, 3, false, true, "fake", "blue"));
+        warriorsCoodinates.push(new Warrior(1, 3, false, true, "flag", "blue"));
 
         return warriorsCoodinates;
     }
@@ -128,7 +128,7 @@
         drawMap();
         for(let i = 0; i < warriorsCoodinates.length; i++){
             let warrior = warriorsCoodinates[i];
-            let cell = map[warrior.x][warrior.y];
+            let cell = map[warrior.y][warrior.x];
             let x = cell.x;
             let y = cell.y;
             
@@ -233,7 +233,6 @@
         let rect = gameCanvas.getBoundingClientRect()
         let x = event.clientX - rect.left;
         let y = event.clientY - rect.top;
-        //console.log("mouseDownHandler: " + x + ", " + y);
         mouseDownCoords.x = x;
         mouseDownCoords.y = y;
     }
@@ -242,25 +241,42 @@
         let rect = gameCanvas.getBoundingClientRect()
         let x = event.clientX - rect.left;
         let y = event.clientY - rect.top;
-        //console.log("mouseUpHandler: " + x + ", " + y);
         if (!isWaitingOpponentMove){
             let fromCellCoords = getCellCoords(mouseDownCoords.x, mouseDownCoords.y);
             let toCellCoords = getCellCoords(x, y);
             if (fromCellCoords != null && toCellCoords != null){
                 if (isMove(fromCellCoords, toCellCoords)){
-                    console.log("isMove");
-                    console.log(fromCellCoords);
-                    console.log(toCellCoords);
+                    sendWarriorMove(fromCellCoords, toCellCoords);
                 }
             }
         }
+    }
+
+    function sendWarriorMove(fromCellCoords, toCellCoords){
+        console.log(fromCellCoords);
     }
 
     function isMove(fromCellCoords, toCellCoords){
         if (fromCellCoords.x != toCellCoords.x || fromCellCoords.y != toCellCoords.y){
             let diffX = fromCellCoords.x - toCellCoords.x;
             let diffY = fromCellCoords.y - toCellCoords.y;
-            return (Math.abs(diffX) == 0 || Math.abs(diffX) == 1) && (Math.abs(diffY) == 0 || Math.abs(diffY) == 1);
+
+            for(let i= 0; i < warriorsCoodinates.length; i++){
+                let warrairCoords = warriorsCoodinates[i];
+                if (!warrairCoords.isOpponent && warrairCoords.x == fromCellCoords.x && warrairCoords.y == fromCellCoords.y){
+                    
+                    // Не ходим на своих игроков
+                    for(let j= 0; j < warriorsCoodinates.length; j++){
+                        let warrairCoords2 = warriorsCoodinates[j];
+                        if (!warrairCoords2.isOpponent && warrairCoords2.x == toCellCoords.x && warrairCoords2.y == toCellCoords.y){
+                            
+                            return false;
+                        }
+                    }
+
+                    return (Math.abs(diffX) == 0 || Math.abs(diffX) == 1) && (Math.abs(diffY) == 0 || Math.abs(diffY) == 1);
+                }
+            }
         }
 
         return false;
