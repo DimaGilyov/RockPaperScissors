@@ -4,17 +4,17 @@
     gameCanvas.width = 840;
     gameCanvas.height = 780;
 
-    gameCanvas.addEventListener("mousemove", mouseMoveHandler);
     gameCanvas.addEventListener("mousedown", mouseDownHandler);
     gameCanvas.addEventListener("mouseup", mouseUpHandler);
-    
+
     let tiles = null;
     let map = null;
     let warriorsCoodinates = null;
- 
-    main();
+    let isWaitingOpponentMove = false;
+    let mouseDownCoords = {};
+    initGame();
 
-    async function main(){
+    async function initGame(){
         tiles = await loadTiles();
         map = buildMap();
         drawMap();
@@ -194,17 +194,22 @@
             }
         }  
     }
-    function buildWarior(){
-        //gameContext.drawImage(wariorBackBlue, 0, 0);
 
-        //gameContext.drawImage(rock, 20, 35, 60, 45);
+    function getCellCoords(x, y){
+        for(let row = 0; row < map.length; row++){
+            for(let col = 0; col < map[0].length; col++){
+                let cell = map[row][col];
+                if (x >= cell.x && y >= cell.y && x <= cell.x + cell.width && y <= cell.y + cell.height){
+                    let coords = {};
+                    coords.x = col;
+                    coords.y = row;
+                    return coords;
+                }
+            }
+        } 
 
-        //const paper  = await loadImage("images/paper.png");
-        //gameContext.drawImage(paper, 0, 0);
-
-        //const scissors  = await loadImage("images/scissors.png");
-        //gameContext.drawImage(scissors, 0, 0);
-    }
+        return null;
+    } 
 
 
     function Cell(x, y, width, height, image){
@@ -223,26 +228,44 @@
         this.weapon = weapon;
         this.color = color;
     }
-    
-    function mouseMoveHandler(event){
-        let rect = gameCanvas.getBoundingClientRect()
-        let x = event.clientX - rect.left;
-        let y = event.clientY - rect.top;
-        console.log("mouseMoveHandler: " + x + ", " + y);
-    }
 
     function mouseDownHandler(event){
         let rect = gameCanvas.getBoundingClientRect()
         let x = event.clientX - rect.left;
         let y = event.clientY - rect.top;
-        console.log("mouseDownHandler: " + x + ", " + y);
+        //console.log("mouseDownHandler: " + x + ", " + y);
+        mouseDownCoords.x = x;
+        mouseDownCoords.y = y;
     }
+
     function mouseUpHandler(event){
         let rect = gameCanvas.getBoundingClientRect()
         let x = event.clientX - rect.left;
         let y = event.clientY - rect.top;
-        console.log("mouseUpHandler: " + x + ", " + y);
+        //console.log("mouseUpHandler: " + x + ", " + y);
+        if (!isWaitingOpponentMove){
+            let fromCellCoords = getCellCoords(mouseDownCoords.x, mouseDownCoords.y);
+            let toCellCoords = getCellCoords(x, y);
+            if (fromCellCoords != null && toCellCoords != null){
+                if (isMove(fromCellCoords, toCellCoords)){
+                    console.log("isMove");
+                    console.log(fromCellCoords);
+                    console.log(toCellCoords);
+                }
+            }
+        }
     }
+
+    function isMove(fromCellCoords, toCellCoords){
+        if (fromCellCoords.x != toCellCoords.x || fromCellCoords.y != toCellCoords.y){
+            let diffX = fromCellCoords.x - toCellCoords.x;
+            let diffY = fromCellCoords.y - toCellCoords.y;
+            return (Math.abs(diffX) == 0 || Math.abs(diffX) == 1) && (Math.abs(diffY) == 0 || Math.abs(diffY) == 1);
+        }
+
+        return false;
+    }
+
 
     function loadImage(src){
         return new Promise((resolve) => {
