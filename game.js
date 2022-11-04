@@ -253,7 +253,19 @@
     }
 
     function sendWarriorMove(fromCellCoords, toCellCoords){
-        console.log(fromCellCoords);
+        warriorMove(fromCellCoords, toCellCoords);
+
+        drawWarriors()
+    }
+
+    function warriorMove(fromCellCoords, toCellCoords){
+        for(let j= 0; j < warriorsCoodinates.length; j++){
+            let warrairCoords2 = warriorsCoodinates[j];
+            if (warrairCoords2.x == fromCellCoords.x && warrairCoords2.y == fromCellCoords.y){          
+                warrairCoords2.x = toCellCoords.x;
+                warrairCoords2.y = toCellCoords.y;
+            }
+        }
     }
 
     function isMove(fromCellCoords, toCellCoords){
