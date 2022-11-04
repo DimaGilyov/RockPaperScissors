@@ -4,12 +4,14 @@
     gameCanvas.width = 840;
     gameCanvas.height = 780;
 
+    gameCanvas.addEventListener("mousemove", mouseMoveHandler);
+    gameCanvas.addEventListener("mousedown", mouseDownHandler);
+    gameCanvas.addEventListener("mouseup", mouseUpHandler);
+    
     let tiles = null;
     let map = null;
     let warriorsCoodinates = null;
-
-    gameCanvas.addEventListener("mousedown", );
-
+ 
     main();
 
     async function main(){
@@ -221,9 +223,25 @@
         this.weapon = weapon;
         this.color = color;
     }
+    
+    function mouseMoveHandler(event){
+        let rect = gameCanvas.getBoundingClientRect()
+        let x = event.clientX - rect.left;
+        let y = event.clientY - rect.top;
+        console.log("mouseMoveHandler: " + x + ", " + y);
+    }
 
-    function WariorColorType(){
-        this.BLUE = "blue";
+    function mouseDownHandler(event){
+        let rect = gameCanvas.getBoundingClientRect()
+        let x = event.clientX - rect.left;
+        let y = event.clientY - rect.top;
+        console.log("mouseDownHandler: " + x + ", " + y);
+    }
+    function mouseUpHandler(event){
+        let rect = gameCanvas.getBoundingClientRect()
+        let x = event.clientX - rect.left;
+        let y = event.clientY - rect.top;
+        console.log("mouseUpHandler: " + x + ", " + y);
     }
 
     function loadImage(src){
